@@ -1,0 +1,62 @@
+<html ng-app="activateApp"> 
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<head>
+<link rel="stylesheet" type="text/css" href="customize.css">
+</head>
+
+  <body class="myback">
+  	<div class="inner">
+  	 <div layout="row" layout-wrap>
+  	<h1 flex-offset="20" class="header">Tag-In</h1>
+  </div>
+  	</div>
+  	<div class="map">
+  		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.117198859971!2d-77.01264918521223!3d38.89843515448912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b789ff0f739d%3A0x6116263f2d290ba1!2s25+Massachusetts+Ave+NW%2C+Washington%2C+DC+20001!5e0!3m2!1sen!2sus!4v1445763645683" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  	</div>
+  	<div ng-controller="activateCtrl">
+  		<div layout="row" layout-wrap>
+		    <div class="boxed" class="btn" ng-repeat="item in info">
+		    	<div ng-if="item.active">
+		    		<div class="avatar">
+		    			<img src="{{item.icon}}" alt="{{item.username}}" style="width:50px;height:50px;">
+		    		</div>
+		    		<div flex-offset="25">
+						<b><span ng-if="item.event">Event</span> {{item.title}}</b>
+						</br>
+						{{item.problem}}
+						</br>
+						</br>
+						<div class="posted-by">
+							Posted by: {{item.username}}
+						</div>
+						</br>
+						<button class="btn" ng-click="deactivate($index)">I'll help!</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<form class="submitbox" ng-submit="process()">
+	    Title:
+	    </br> 
+	    <input ng-model="title" type="text"/>
+	    </br>
+
+	    Problem Description:
+	    </br>
+	    <input ng-model="problem" type= "text"/>
+	    <br/>
+
+	    Check if this is an event <input ng-model="event" type="checkbox"/>
+	    <br/>
+
+	    <button>Process</button>
+	  </form>
+	</div>
+
+	<script src="activateApp.js"></script>
+    <script src="activateCtrl.js"></script>
+  </body>
+</html>
+
+
